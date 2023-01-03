@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace IndianStatesCensusAnalyserProblem
 {
-     // Model Class
     internal class StateCensusData
     {
         public string State { get; set; }
@@ -15,3 +14,4 @@ namespace IndianStatesCensusAnalyserProblem
         public string DensityPerSqKm { get; set; }
     }
 }
+
