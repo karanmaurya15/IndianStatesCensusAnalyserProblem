@@ -1,7 +1,6 @@
 ﻿using CsvHelper;
 using System;
 using System.Collections.Generic;
-using System.Formats.Asn1;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -9,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace IndianStatesCensusAnalyserProblem
 {
-    public class CSVStateCensus
+    public class StateCodeAnalyzer
     {
         public int ReadStateCensusData(string filepath)
         {
@@ -20,7 +19,7 @@ namespace IndianStatesCensusAnalyserProblem
                 foreach (var data in records)
                 {
                     // Console.WriteLine(data.State + " " + data.Population + " " + data.DensityPerSqKm + " " + data.AreaInSqKm);
-                    Console.WriteLine(data);                 
+                    Console.WriteLine(data);
                 }
                 return records.Count - 1;
             }
