@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace IndianStatesCensusAnalyserProblem
 {
-    internal class IndianStateCode
+    public class IndianStateCode
     {
-        public void ReadStateCodeData(string filepath)
+        public int ReadStateCodeData(string filepath)
         {
             using (var reader = new StreamReader(filepath))
             using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
@@ -18,8 +18,10 @@ namespace IndianStatesCensusAnalyserProblem
                 var records = csv.GetRecords<StateCodeData>().ToList();
                 foreach (var data in records)
                 {
-                    Console.WriteLine(data.SrNo + " " + data.StateName + " " + data.Tin + " " + data.StateCodes);
+                    // Console.WriteLine(data.SrNo + " " + data.StateName + " " + data.Tin + " " + data.StateCodes);
+                    Console.WriteLine(data);
                 }
+                return records.Count - 1;
             }
         }
     }

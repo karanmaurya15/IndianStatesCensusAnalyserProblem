@@ -10,7 +10,7 @@ namespace IndianStatesCensusAnalyserProblem
 {
     public class StateCodeAndCensusAnalyzer
     {
-        public int ReadStateCensusData(string filepath)
+        public int ReadStateCodeData(string filepath)
         {
             // T.C-1.2
             if (!File.Exists(filepath))
@@ -31,7 +31,7 @@ namespace IndianStatesCensusAnalyserProblem
             using (var reader = new StreamReader(filepath))
             using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
             {
-                var records = csv.GetRecords<StateCensusData>().ToList();
+                var records = csv.GetRecords<StateCodeData>().ToList();
                 foreach (var data in records)
                 {
                     // Console.WriteLine(data.State + " " + data.Population + " " + data.DensityPerSqKm + " " + data.AreaInSqKm);
@@ -41,7 +41,7 @@ namespace IndianStatesCensusAnalyserProblem
             }
         }
         // T.C-1.5
-        public bool ReadStateCensusData(string filepath, string header)
+        public bool ReadStateCodeData(string filepath, string header)
         {
             var read = File.ReadAllLines(filepath);
             string headers = read[0];

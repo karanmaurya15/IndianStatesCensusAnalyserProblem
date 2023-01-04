@@ -4,24 +4,24 @@ namespace IndianStateCensusTest
 {
     public class Tests
     {
-        public static string stateCensusCSVFilePath = @"C:\BridgeLabz\IndianStatesCensusAnalyserProblem\IndianStatesCensusAnalyserProblems\IndianStatesCensusAnalyserProblem\File\StateCensusData.csv";
-        public static string stateCensusIncorrectCSVFilePath = @"C:\BridgeLabz\IndianStatesCensusAnalyserProblem\IndianStatesCensusAnalyserProblems\IndianStatesCensusAnalyserProblem\File\StateCensus.csv";
-        public static string stateCensusIncorrectCSVFileType = @"C:\BridgeLabz\IndianStatesCensusAnalyserProblem\IndianStatesCensusAnalyserProblems\IndianStatesCensusAnalyserProblem\File\StateCensus.txt";
-        
+        public static string stateCodeFilePath = @"C:\BridgeLabz\IndianStatesCensusAnalyserProblem\IndianStatesCensusAnalyserProblems\IndianStatesCensusAnalyserProblem\File\StateCode.csv";
+        public static string stateCodeIncorrectCSVFilePath = @"C:\BridgeLabz\IndianStatesCensusAnalyserProblem\IndianStatesCensusAnalyserProblems\IndianStatesCensusAnalyserProblem\File\State.csv";
+        public static string stateCodeIncorrectCSVFileType = @"C:\BridgeLabz\IndianStatesCensusAnalyserProblem\IndianStatesCensusAnalyserProblems\IndianStatesCensusAnalyserProblem\File\StateCode.txt";
+
         [Test]  // T.C-1.1
-        public void GivenStateCensusData_WhenAnalysed_ShouldReturnNoOfRecordMatches()
+        public void GivenStateCodeData_WhenAnalysed_ShouldReturnNoOfRecordMatches()
         {
             StateCodeAndCensusAnalyzer stateCodeAndCensusAnalyzer = new StateCodeAndCensusAnalyzer();
-            CSVStateCensus cSVStateCensus = new CSVStateCensus();
-            Assert.AreEqual(stateCodeAndCensusAnalyzer.ReadStateCensusData(stateCensusCSVFilePath), cSVStateCensus.ReadStateCensusData(stateCensusCSVFilePath));
+            IndianStateCode indianStateCode = new IndianStateCode();
+            Assert.AreEqual(stateCodeAndCensusAnalyzer.ReadStateCodeData(stateCodeFilePath), indianStateCode.ReadStateCodeData(stateCodeFilePath));
         }
         [Test]  // T.C-1.2
-        public void GivenStateCensusDataFileIncorrect_WhenAnalyzed_ShouldReturnException()
+        public void GivenStateCodeDataFileIncorrect_WhenAnalyzed_ShouldReturnException()
         {
             StateCodeAndCensusAnalyzer stateCodeAndCensusAnalyzer = new StateCodeAndCensusAnalyzer();
             try
             {
-                int record = stateCodeAndCensusAnalyzer.ReadStateCensusData(stateCensusIncorrectCSVFilePath);
+                int record = stateCodeAndCensusAnalyzer.ReadStateCodeData(stateCodeIncorrectCSVFilePath);
             }
             catch(StateCensusAndCodeException ex)
             {
@@ -29,12 +29,12 @@ namespace IndianStateCensusTest
             }
         }
         [Test]  // T.C-1.3
-        public void GivenStateCensusDataFileTypeIncorrect_WhenAnalyzed_ShouldReturnException()
+        public void GivenStateCodeDataFileTypeIncorrect_WhenAnalyzed_ShouldReturnException()
         {
             StateCodeAndCensusAnalyzer stateCodeAndCensusAnalyzer = new StateCodeAndCensusAnalyzer();
             try
             {
-                int record = stateCodeAndCensusAnalyzer.ReadStateCensusData(stateCensusIncorrectCSVFileType);
+                int record = stateCodeAndCensusAnalyzer.ReadStateCodeData(stateCodeIncorrectCSVFileType);
             }
             catch (StateCensusAndCodeException ex)
             {
@@ -42,12 +42,12 @@ namespace IndianStateCensusTest
             }
         }
         [Test]  // T.C-1.4
-        public void GivenStateCensusDataDelimeterIncorrect_WhenAnalyzed_ShouldReturnException()
+        public void GivenStateCodeDataDelimeterIncorrect_WhenAnalyzed_ShouldReturnException()
         {
             StateCodeAndCensusAnalyzer stateCodeAndCensusAnalyzer = new StateCodeAndCensusAnalyzer();
             try
             {
-                int record = stateCodeAndCensusAnalyzer.ReadStateCensusData(stateCensusCSVFilePath);
+                int record = stateCodeAndCensusAnalyzer.ReadStateCodeData(stateCodeFilePath);
             }
             catch (StateCensusAndCodeException ex)
             {
@@ -55,12 +55,12 @@ namespace IndianStateCensusTest
             }
         }
         [Test]  // T.C-1.5
-        public void GivenStateCensusDataFileIncorrectHeader_WhenAnalyzed_ShouldReturnException()
+        public void GivenStateCodeDataFileIncorrectHeader_WhenAnalyzed_ShouldReturnException()
         {
             StateCodeAndCensusAnalyzer stateCodeAnalyzer = new StateCodeAndCensusAnalyzer();
             try
             {
-                bool records = stateCodeAnalyzer.ReadStateCensusData(stateCensusCSVFilePath, "State,Population,AreaInSqKm,DensityPerSqKm");
+                bool records = stateCodeAnalyzer.ReadStateCodeData(stateCodeFilePath, "SrNo,StateName,Tin,StateCodes");
                 Assert.IsTrue(records);
             }
             catch (StateCensusAndCodeException ex)

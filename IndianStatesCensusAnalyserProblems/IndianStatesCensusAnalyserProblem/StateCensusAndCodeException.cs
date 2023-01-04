@@ -20,7 +20,5 @@ namespace IndianStatesCensusAnalyserProblem
         {
            Type = exceptionType;
         }
-
-    }
-   
+    } 
 }
