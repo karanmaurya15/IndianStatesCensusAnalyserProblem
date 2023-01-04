@@ -10,12 +10,17 @@ namespace IndianStatesCensusAnalyserProblem
     {
         public enum ExceptionType
         {
-
+            FILE_INCORRECT,
+            TYPE_INCORRET,
+            DELIMETER_INCORRET,
+            HEADER_INCORRECT
         }
+        public ExceptionType Type;
         public StateCensusAndCodeException(ExceptionType exceptionType, string message) : base(message)
         {
-
+           Type = exceptionType;
         }
 
     }
+   
 }
